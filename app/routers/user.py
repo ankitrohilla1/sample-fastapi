@@ -7,7 +7,7 @@ router = APIRouter(prefix='/users', tags=['Users'])
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserOut)
-def create_user(user: schemas.UserCreate, db: Session = Depends(get_db), get_current_user: int = Depends(oath2.get_current_user)):
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(models.User).filter(models.User.email == user.email).first()
     if not existing_user:
         hashed_pwd = utils.hash_it(user.password)
