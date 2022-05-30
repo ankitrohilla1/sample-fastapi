@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: say hi to ankit
-        uses: echo "hello ankit"
+      - uses: echo "hello ankit"
